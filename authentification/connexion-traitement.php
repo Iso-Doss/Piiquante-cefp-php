@@ -1,5 +1,12 @@
 <?php
+
+include ('../fonction.php');
+
 session_start();
+
+$bd  = connexion_base_de_donnee();
+
+die(var_dump($bd));
 
 $donnee = array();
 

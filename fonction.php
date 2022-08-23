@@ -29,3 +29,19 @@ function se_deconnecter()
         ]
     );
 }
+
+function connexion_base_de_donnee(){
+
+    $bd = "";
+
+    try
+    {
+        $bd = new PDO('mysql:host=localhost;dbname=piiquante;charset=utf8', 'root', 'root');
+    }
+    catch (Exception $e)
+    {
+        $bd = "Une erreur s'est produite lors de la connexion a la base de donnée.";
+    }
+
+    return $bd;
+}
