@@ -1,0 +1,2 @@
+<?php
+echo "OUPS CETTE RESSOURCES N'EXISTE PAS";

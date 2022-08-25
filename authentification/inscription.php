@@ -1,15 +1,5 @@
 <?php
 
-session_start();
-
-include '../fonction.php';
-
-if(est_connecter()){
-
-    header("location: ../index.php");
-
-}
-
 $donnees = array();
 
 $erreurs = array();
@@ -27,19 +17,6 @@ if(isset($_SESSION["erreurs_inscription"]) && !empty($_SESSION["erreurs_inscript
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Connexion | Piiquante</title>
-</head>
-<body>
-    <?php include '../header.php' ?>
-
-    <div class="container">
 
         <div class="row">
 
@@ -79,7 +56,7 @@ if(isset($_SESSION["erreurs_inscription"]) && !empty($_SESSION["erreurs_inscript
 
         ?>  
 
-                <form action="inscription-traitement.php" method="POST">
+                <form action="index.php?page=inscription-traitement" method="POST">
 
                 <div class="mb-3">
                         <label for="nom" class="form-label">Nom de famille:</label>
@@ -222,10 +199,3 @@ if(isset($_SESSION["erreurs_inscription"]) && !empty($_SESSION["erreurs_inscript
             <div class="col-md-3"></div>
 
         </div>
-
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-</body>
-</html>

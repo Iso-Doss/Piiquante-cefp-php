@@ -69,7 +69,7 @@ if(isset($_POST["email"]) && !empty($_POST["email"] && filter_var($_POST["email"
 
 if(isset($_POST["mot-de-passe"]) && !empty($_POST["mot-de-passe"])){
     
-    $donnees["mot-de-passe"] = $_POST["mot-de-passe"];
+    //$donnees["mot-de-passe"] = $_POST["mot-de-passe"];
 
 }else{
 
@@ -79,7 +79,7 @@ if(isset($_POST["mot-de-passe"]) && !empty($_POST["mot-de-passe"])){
 
 if(isset($_POST["confimer-mot-de-passe"]) && !empty($_POST["confimer-mot-de-passe"])){
     
-    $donnees["confimer-mot-de-passe"] = $_POST["confimer-mot-de-passe"];
+    //$donnees["confimer-mot-de-passe"] = $_POST["confimer-mot-de-passe"];
 
 }else{
 
@@ -103,6 +103,20 @@ if($_POST["mot-de-passe"] != $_POST["confimer-mot-de-passe"]){
 
 }
 
+$bd =  connexion_base_de_donnee();
+
+$email_existe  = verifier_un_utilisateur_via_un_email($_POST["email"]);
+
+if($email_existe){
+    $erreurs["email"] = "L'adresse email renseigné existe déja. Veuillez le changer.";
+}
+
+$nom_utilisateur  = verifier_un_utilisateur_via_un_nom_utilisateur($_POST["nom_utilisateur"]);
+
+if($nom_utilisateur){
+    $erreurs["nom_utilisateur"] = "Le nom d'utilisateur renseigné existe déja. Veuillez le changer.";
+}
+
 setcookie(
     "donnee_utilisateur_inscription", 
     json_encode($donnees),
@@ -116,8 +130,6 @@ setcookie(
 
 
 if(empty($erreurs)){
-
-    $bd =  connexion_base_de_donnee();
 
     if(is_object($bd)){
 
@@ -143,11 +155,11 @@ if(empty($erreurs)){
 
         if($resultat){
 
-            header("location: inscription.php?success=Inscription éffectué avec succèss. Veuillez vous connecté.");
+            header("location: index.php?page=inscription&success=Inscription éffectué avec succèss. Veuillez vous connecté.");
 
         }else{
 
-            header("location: inscription.php?erreur=Oupss!!! Une erreure s'est produite lors de l'enregistrement de l'utilisateur. Veuillez réessayer ou contacter l'admin du site.");
+            header("location: index.php?page=inscription&erreur=Oupss!!! Une erreure s'est produite lors de l'enregistrement de l'utilisateur. Veuillez réessayer ou contacter l'admin du site.");
 
         }
 
@@ -155,7 +167,7 @@ if(empty($erreurs)){
 
     }else{
 
-        header("location: inscription.php?erreur=" . $bd);
+        header("location: index.php?page=inscription&erreur=" . $bd);
 
     }
 
@@ -164,6 +176,6 @@ if(empty($erreurs)){
 
     $_SESSION["erreurs_inscription"] = $erreurs;
 
-    header("location: inscription.php");
+    header("location: index.php?page=inscription");
 
 }
