@@ -1,0 +1,17 @@
+.login-container{
+    display: flex;
+    justify-content: center;
+}
+
+.custom-error-page-container{
+    height: 100vh;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.img-fluid{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}

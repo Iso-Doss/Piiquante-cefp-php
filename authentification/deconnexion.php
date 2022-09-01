@@ -1,2 +1,0 @@
-<?php
-se_deconnecter();
