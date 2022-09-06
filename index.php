@@ -71,6 +71,11 @@ include('app/fonction.php');
                     if (est_connecter()) {
                     ?>
                         <li class="nav-item">
+                            <a class="nav-link" href="index.php?page=mon-profil" role="button">
+                                Mon profil
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="index.php?page=deconnexion" role="button">
                                 Déconnexion
                             </a>

@@ -1,3 +1,10 @@
+<?php
+
+$sauces = liste_sauce();
+
+?>
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -16,151 +23,82 @@
     <div class="content">
         <div class="container">
 
+            <?php
+
+            if (isset($_GET["erreur"]) && !empty($_GET["erreur"])) {
+
+            ?>
+
+                <div class="alert alert-danger" role="alert">
+
+                    <?= $_GET["erreur"]; ?>
+
+                </div>
+
+            <?php
+
+            }
+
+            if (isset($_GET["success"]) && !empty($_GET["success"])) {
+
+            ?>
+
+                <div class="alert alert-success" role="alert">
+
+                    <?= $_GET["success"]; ?>
+
+                </div>
+
+            <?php
+
+            }
+
+            ?>
+
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card card-widget widget-user-2">
-                        <!-- Add the bg color to the header using any of the bg-* classes -->
-                        <div class="widget-user-header bg-white">
-                            
-                                <img class="img-fluid" src="public/img/piiquante.webp" alt="User Avatar">
-                            
-                        </div>
-                        <div class="card-footer p-0">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        Sauce piiquante
-                                        <span class="float-right badge bg-white">
-                                            31
-                                            <i class="fas fa-heart"></i>
-                                        </span>
 
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-widget widget-user-2">
-                        <!-- Add the bg color to the header using any of the bg-* classes -->
-                        <div class="widget-user-header bg-white">
-                            
-                                <img class="img-fluid" src="public/img/piiquante.webp" alt="User Avatar">
-                            
-                        </div>
-                        <div class="card-footer p-0">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        Sauce piiquante
-                                        <span class="float-right badge bg-white">
-                                            31
-                                            <i class="fas fa-heart"></i>
-                                        </span>
+                <?php
 
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-widget widget-user-2">
-                        <!-- Add the bg color to the header using any of the bg-* classes -->
-                        <div class="widget-user-header bg-white">
-                            
-                                <img class="img-fluid" src="public/img/piiquante.webp" alt="User Avatar">
-                            
-                        </div>
-                        <div class="card-footer p-0">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        Sauce piiquante
-                                        <span class="float-right badge bg-white">
-                                            31
-                                            <i class="fas fa-heart"></i>
-                                        </span>
+                if (isset($sauces) && !empty($sauces)) {
 
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-widget widget-user-2">
-                        <!-- Add the bg color to the header using any of the bg-* classes -->
-                        <div class="widget-user-header bg-white">
-                            
-                                <img class="img-fluid" src="public/img/piiquante.webp" alt="User Avatar">
-                            
-                        </div>
-                        <div class="card-footer p-0">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        Sauce piiquante
-                                        <span class="float-right badge bg-white">
-                                            31
-                                            <i class="fas fa-heart"></i>
-                                        </span>
+                    foreach ($sauces as $key => $sauce) {
 
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-widget widget-user-2">
-                        <!-- Add the bg color to the header using any of the bg-* classes -->
-                        <div class="widget-user-header bg-white">
-                            
-                                <img class="img-fluid" src="public/img/piiquante.webp" alt="User Avatar">
-                            
-                        </div>
-                        <div class="card-footer p-0">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        Sauce piiquante
-                                        <span class="float-right badge bg-white">
-                                            31
-                                            <i class="fas fa-heart"></i>
-                                        </span>
+                ?>
 
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-widget widget-user-2">
-                        <!-- Add the bg color to the header using any of the bg-* classes -->
-                        <div class="widget-user-header bg-white">
-                            
-                                <img class="img-fluid" src="public/img/piiquante.webp" alt="User Avatar">
-                            
-                        </div>
-                        <div class="card-footer p-0">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        Sauce piiquante
-                                        <span class="float-right badge bg-white">
-                                            31
-                                            <i class="fas fa-heart"></i>
-                                        </span>
+                        <div class="col-md-4">
+                            <div class="card card-widget widget-user-2">
+                                <!-- Add the bg color to the header using any of the bg-* classes -->
+                                <div class="widget-user-header bg-white">
 
-                                    </a>
-                                </li>
-                            </ul>
+                                    <img class="img-fluid" src="<?= $sauce["image"]; ?>" alt="User Avatar">
+
+                                </div>
+                                <div class="card-footer p-0">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <?= $sauce["titre"]; ?>
+                                                <span class="float-right badge bg-white">
+                                                    31
+                                                    <i class="fas fa-heart"></i>
+                                                </span>
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+
+                <?php
+
+                    }
+                } else {
+
+                    echo "<p>Aucune sauce n'est disponible pour le moment.</p>";
+                }
+
+                ?>
             </div>
         </div>
     </div>

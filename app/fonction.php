@@ -18,6 +18,10 @@ function router()
                 include('app/sauce/ajouter-sauce.php');
                 break;
 
+            case "ajouter-sauce-traitement":
+                include('app/sauce/ajouter-sauce-traitement.php');
+                break;
+
             case "contact":
                 include('app/contact.php');
                 break;
@@ -154,5 +158,63 @@ function verifier_un_utilisateur_via_un_nom_utilisateur($nom_utilisateur){
     }
 
     return $utilisateur_existe;
+
+}
+
+
+function ajouter_sauce(string $titre, string $description, string $image, int $user_id): bool
+{
+
+    $ajout_sauce = false;
+
+
+    $bdd = connexion_base_de_donnee();
+
+    $requette = "INSERT INTO sauce (titre, description, image, id_user) VALUES (:titre, :description, :image, :id_user)";
+
+    $preparation_requette = $bdd->prepare($requette);
+
+    $execution_requette = $preparation_requette->execute(
+        [
+            'titre' => $titre,
+            'description' => $description,
+            'image' => $image,
+            'id_user' => $user_id
+        ]);
+
+    if($execution_requette){
+        
+        $ajout_sauce = true;
+        
+    }
+
+    return $ajout_sauce;
+
+}
+
+function liste_sauce(){
+
+    $sauces = [];
+
+    $bd = connexion_base_de_donnee();
+
+    $requette = "SELECT * FROM sauce ORDER BY id DESC";
+
+    $preparation_requette = $bd->prepare($requette);
+
+    $execution_requette = $preparation_requette->execute();
+
+    if($execution_requette){
+
+        $donnees = $preparation_requette->fetchAll(PDO::FETCH_ASSOC);
+
+        if(isset($donnees) && !empty($donnees) && is_array($donnees)){
+
+            $sauces = $donnees;
+
+        }
+    }
+
+    return $sauces;
 
 }
