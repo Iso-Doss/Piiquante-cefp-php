@@ -64,7 +64,7 @@ if (isset($_SESSION["erreurs_ajout_sauce"]) && !empty($_SESSION["erreurs_ajout_s
                         <div class="card-header">
                             <h3 class="card-title">Ajouter un sauce</h3>
                         </div>
-                        <form>
+                        
                             <div class="card-body">
 
                                 <div class="form-group">
@@ -111,7 +111,7 @@ if (isset($_SESSION["erreurs_ajout_sauce"]) && !empty($_SESSION["erreurs_ajout_s
                                 <input type="submit" class="btn btn-primary" value="Ajouter">
                                 <input type="reset" class="btn btn-danger" value="Annuler">
                             </div>
-                        </form>
+                        
                     </div>
 
                 </form>

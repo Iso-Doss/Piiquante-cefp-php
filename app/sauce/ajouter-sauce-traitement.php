@@ -93,7 +93,7 @@ if (empty($erreurs)) {
 
     }else{
 
-        header("location: index.php?page=ajouter-sauce&erreur=Oupss!!! Une erreure s'est produite lors de l'enregistrement de l'utilisateur. Veuillez réessayer ou contacter l'admin du site.");
+        header("location: index.php?page=ajouter-sauce&erreur=Oupss!!! Une erreure s'est produite lors de l'enregistrement de la sauce. Veuillez réessayer ou contacter l'admin du site.");
 
     }
 

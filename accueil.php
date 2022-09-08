@@ -1,6 +1,13 @@
 <?php
 
-$sauces = liste_sauce();
+
+$sauce_page = 1;
+
+if (isset($_GET["sauce_page"]) && !empty($_GET["sauce_page"])) {
+    $sauce_page = $_GET["sauce_page"];
+}
+
+$sauces = liste_sauce($sauce_page);
 
 ?>
 
@@ -65,7 +72,7 @@ $sauces = liste_sauce();
 
                 ?>
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="card card-widget widget-user-2">
                                 <!-- Add the bg color to the header using any of the bg-* classes -->
                                 <div class="widget-user-header bg-white">
@@ -76,7 +83,7 @@ $sauces = liste_sauce();
                                 <div class="card-footer p-0">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <a href="index.php?page=details-sauce&id-sauce=<?= $sauce["id"]; ?>" class="nav-link">
                                                 <?= $sauce["titre"]; ?>
                                                 <span class="float-right badge bg-white">
                                                     31
@@ -90,16 +97,51 @@ $sauces = liste_sauce();
                             </div>
                         </div>
 
-                <?php
+                    <?php
 
                     }
+
+                    ?>
+
+            </div>
+
+            <div class="col-sm-12 col-md-7">
+                <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                    <ul class="pagination">
+                        <li class="paginate_button page-item previous" id="example2_previous">
+
+                            <a href="index.php?page=accueil&sauce_page=<?= ($sauce_page - 1 <= 0) ? 1 : $sauce_page - 1; ?>" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Précédent</a>
+
+                        </li>
+
+                        <li class="paginate_button page-item active">
+
+                            <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+
+                                <?= $sauce_page; ?>
+
+                            </a>
+
+                        </li>
+
+                        <li class="paginate_button page-item next" id="example2_next">
+
+                            <a href="index.php?page=accueil&sauce_page=<?= $sauce_page + 1; ?>" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Suivant</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        <?php
+
+
                 } else {
 
                     echo "<p>Aucune sauce n'est disponible pour le moment.</p>";
                 }
 
-                ?>
-            </div>
+        ?>
         </div>
     </div>
     <!-- /.content -->
